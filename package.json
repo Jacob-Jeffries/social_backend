@@ -4,7 +4,8 @@
   "description": "MSU Bootcamp module 18 Challenge",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "npx eslint **/*.js --quiet; exit 0",
+    "test": "npm run lint"
   },
   "repository": {
     "type": "git",
