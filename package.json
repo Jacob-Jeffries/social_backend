@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "npx eslint **/*.js --quiet; exit 0",
     "test": "npm run lint",
+    "seed": "node ./server/utils/seed.js",
     "dev": "nodemon ./server/server.js"
   },
   "repository": {
