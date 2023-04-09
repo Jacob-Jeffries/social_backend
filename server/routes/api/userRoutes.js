@@ -76,4 +76,19 @@ router.put('/:id', async (req, res) => {
   }
 })
 
+// Route /api/user/removeFriend:id
+// PUT to  a new friend to user's friend list
+router.put('/removeFriend/:id', async (req, res) => {
+  try {
+    const userData = await User.updateOne(
+      { _id: req.params.id },
+      { $pull: req.body },
+      { runValidators: true, new: true }
+    )
+    res.status(200).json(userData)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
 module.exports = router
