@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "npx eslint **/*.js --quiet; exit 0",
-    "test": "npm run lint"
+    "test": "npm run lint",
+    "dev": "nodemon ./server/server.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,8 @@
   },
   "homepage": "https://github.com/Jacob-Jeffries/social_backend#readme",
   "dependencies": {
-    "nodemon": "^2.0.22"
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3"
   },
   "devDependencies": {
     "eslint": "^8.38.0",
@@ -27,6 +29,7 @@
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.7.0",
-    "eslint-plugin-promise": "^6.1.1"
+    "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^2.0.22"
   }
 }
