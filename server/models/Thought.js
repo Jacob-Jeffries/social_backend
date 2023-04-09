@@ -29,18 +29,13 @@ const thoughtSchema = new Schema(
   }
 )
 
-thoughtSchema
-  .virtual('reactionCount')
-  .get(function () {
-    return this.reactions.length
-  })
+thoughtSchema.virtual('reactionCount').get(function () {
+  return this.reactions.length
+})
 
-thoughtSchema
-  .virtual('createdAtFormatted')
-  // Getter
-  .get(function () {
-    return this.createdAt.toLocalString()
-  })
+thoughtSchema.virtual('Time_Stamp').get(function () {
+  return this.createdAt.toLocaleString()
+})
 
 const Thought = model('Thought', thoughtSchema)
 

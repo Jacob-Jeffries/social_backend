@@ -1,5 +1,4 @@
 // Thought Routes
-
 const router = require('express').Router()
 const { Thought, User } = require('../../models')
 
@@ -7,8 +6,8 @@ const { Thought, User } = require('../../models')
 // GET All thoughts
 router.get('/', async (req, res) => {
   try {
-    const thoughtData = await Thought.find()
-    res.status(200).json(thoughtData)
+    const data = await Thought.find()
+    res.status(200).json(data)
   } catch (err) {
     res.status(500).json(err)
   }
@@ -35,12 +34,12 @@ router.post('/', async (req, res) => {
         username: req.body.username
       }
     )
-    const userData = await User.updateOne(
+    await User.updateOne(
       { _id: req.body.userId },
       { $push: { thoughts: thoughtData._id } },
       { runValidators: true, new: true }
     )
-    res.status(200).json(thoughtData, userData)
+    res.status(200).json(thoughtData)
   } catch (err) {
     res.status(500).json(err)
   }
