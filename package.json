@@ -21,7 +21,7 @@
   "homepage": "https://github.com/Jacob-Jeffries/social_backend#readme",
   "dependencies": {
     "express": "^4.18.2",
-    "mongoose": "^7.0.3"
+    "mongoose": "^6.9.2"
   },
   "devDependencies": {
     "eslint": "^8.38.0",
