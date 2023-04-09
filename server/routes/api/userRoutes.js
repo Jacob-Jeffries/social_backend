@@ -18,6 +18,7 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     const userData = await User.findOne({ _id: req.params.id })
+    // console.log(userData._id)
     res.status(200).json(userData)
   } catch (err) {
     res.status(500).json(err)
@@ -67,7 +68,7 @@ router.put('/:id', async (req, res) => {
   try {
     const userData = await User.updateOne(
       { _id: req.params.id },
-      { $set: req.body },
+      { $push: req.body },
       { runValidators: true, new: true }
     )
     res.status(200).json(userData)
