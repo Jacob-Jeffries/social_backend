@@ -1,6 +1,7 @@
 const { Schema, model } = require('mongoose')
 
 // Schema to create User Model
+// For some reason there is no Password?? - Whatever
 const userSchema = new Schema(
   {
     username: {

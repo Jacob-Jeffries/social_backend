@@ -33,6 +33,8 @@ thoughtSchema
   .get(function () {
     return this.reactions.length
   })
+
+thoughtSchema
   .virtual('createdAtFormatted')
   // Getter
   .get(function () {
