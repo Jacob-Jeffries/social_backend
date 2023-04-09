@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose')
-const reactionSchema = require('./Reactions')
+const reactionSchema = require('./Reaction')
 
 // Schema to create Thought Model
 const thoughtSchema = new Schema(
