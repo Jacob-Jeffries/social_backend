@@ -60,4 +60,20 @@ router.put('/:id', async (req, res) => {
   }
 })
 
+// Route /api/thought/:id
+// DELETE Single Thought
+router.delete('/:id', async (req, res) => {
+  try {
+    const thoughtData = await Thought.findOneAndDelete({ _id: req.params.id })
+    await User.updateOne(
+      { username: thoughtData.username },
+      { $pull: { thoughts: thoughtData._id } },
+      { runValidators: true, new: true }
+    )
+    res.status(200).json(thoughtData)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
 module.exports = router
