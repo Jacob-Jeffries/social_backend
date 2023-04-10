@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
   }
 })
 
-// Route /api/user/:id
-// GET Single User
+// Route /api/thought/:id
+// GET Single thought
 router.get('/:id', async (req, res) => {
   try {
     const thoughtData = await Thought.findOne({ _id: req.params.id })
@@ -24,8 +24,8 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// Route /api/user
-// POST Create User
+// Route /api/thought
+// POST Create Thought & add to user entry
 router.post('/', async (req, res) => {
   try {
     const thoughtData = await Thought.create(
@@ -37,6 +37,21 @@ router.post('/', async (req, res) => {
     await User.updateOne(
       { _id: req.body.userId },
       { $push: { thoughts: thoughtData._id } },
+      { runValidators: true, new: true }
+    )
+    res.status(200).json(thoughtData)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+// Route /api/thought/:id
+// PUT Update Single Thought
+router.put('/:id', async (req, res) => {
+  try {
+    const thoughtData = await Thought.updateOne(
+      { _id: req.params.id },
+      { $set: req.body },
       { runValidators: true, new: true }
     )
     res.status(200).json(thoughtData)

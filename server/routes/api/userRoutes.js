@@ -78,8 +78,8 @@ router.put('/:id', async (req, res) => {
 })
 
 // Route /api/user/removeFriend:id
-// PUT to  a new friend to user's friend list
-router.put('/removeFriend/:id', async (req, res) => {
+// DELETE to remove a friend from user's friend list
+router.delete('/removeFriend/:id', async (req, res) => {
   try {
     const userData = await User.updateOne(
       { _id: req.params.id },
