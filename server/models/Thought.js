@@ -14,6 +14,10 @@ const thoughtSchema = new Schema(
       type: Date,
       default: Date.now
     },
+    updatedAt: {
+      type: Date,
+      default: Date.now
+    },
     username: {
       type: String,
       require: true
@@ -24,22 +28,18 @@ const thoughtSchema = new Schema(
     toJSON: {
       virtuals: true
     },
-    id: false
+    id: false,
+    versionKey: false
   }
 )
 
-thoughtSchema
-  .virtual('reactionCount')
-  .get(function () {
-    return this.reactions.length
-  })
+thoughtSchema.virtual('reactionCount').get(function () {
+  return this.reactions.length
+})
 
-thoughtSchema
-  .virtual('createdAtFormatted')
-  // Getter
-  .get(function () {
-    return this.createdAt.toLocalString()
-  })
+thoughtSchema.virtual('Time_Stamp').get(function () {
+  return this.createdAt.toLocaleString()
+})
 
 const Thought = model('Thought', thoughtSchema)
 
