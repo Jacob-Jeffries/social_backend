@@ -63,6 +63,8 @@ Prior to using this application, MongoDB and either Insomnia or Postman must be 
         7. DELETE - /api/thought/:thoughtId/reactions/:reactionId - delete a specific reaction to a specific thought using both of their id's
 4. Please watch the video below for examples of each of these routes
 
+https://www.youtube.com/watch?v=2wyDIM760jE
+
 ## Credits
 
 Coded independently by Jacob Jeffries
