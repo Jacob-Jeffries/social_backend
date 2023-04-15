@@ -62,13 +62,13 @@ router.delete('/:id', async (req, res) => {
   }
 })
 
-// Route /api/user/:id
+// Route /api/user/:userId/friends/:friendId
 // PUT to add a new friend to user's friend list
-router.put('/:id', async (req, res) => {
+router.put('/:userId/friends/:friendId', async (req, res) => {
   try {
-    const userData = await User.updateOne(
-      { _id: req.params.id },
-      { $push: req.body },
+    const userData = await User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $push: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )
     res.status(200).json(userData)
@@ -79,11 +79,11 @@ router.put('/:id', async (req, res) => {
 
 // Route /api/user/removeFriend:id
 // DELETE to remove a friend from user's friend list
-router.delete('/removeFriend/:id', async (req, res) => {
+router.delete('/:userId/friends/:friendId', async (req, res) => {
   try {
-    const userData = await User.updateOne(
-      { _id: req.params.id },
-      { $pull: req.body },
+    const userData = await User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { friends: req.params.friendId } },
       { runValidators: true, new: true }
     )
     res.status(200).json(userData)
