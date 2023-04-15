@@ -51,7 +51,7 @@ router.put('/:id', async (req, res) => {
   try {
     const thoughtData = await Thought.updateOne(
       { _id: req.params.id },
-      { $set: req.body },
+      { $set: req.body, updatedAt: new Date() },
       { runValidators: true, new: true }
     )
     res.status(200).json(thoughtData)
@@ -68,6 +68,21 @@ router.delete('/:id', async (req, res) => {
     await User.updateOne(
       { username: thoughtData.username },
       { $pull: { thoughts: thoughtData._id } },
+      { runValidators: true, new: true }
+    )
+    res.status(200).json(thoughtData)
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+// Route /api/thought/:thoughtId/reactions
+// POST to create a reaction stored in a single thought's reactions array field
+router.post('/:thoughtId/reactions', async (req, res) => {
+  try {
+    const thoughtData = await Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $addToSet: { reactions: req.body } },
       { runValidators: true, new: true }
     )
     res.status(200).json(thoughtData)
