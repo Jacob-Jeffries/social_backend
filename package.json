@@ -4,8 +4,6 @@
   "description": "MSU Bootcamp module 18 Challenge",
   "main": "index.js",
   "scripts": {
-    "lint": "npx eslint **/*.js --quiet; exit 0",
-    "test": "npm run lint",
     "seed": "node ./server/utils/seed.js",
     "dev": "nodemon ./server/server.js"
   },
