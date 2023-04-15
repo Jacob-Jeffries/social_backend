@@ -1,10 +1,11 @@
-const { Schema } = require('mongoose')
+const { Schema, Types } = require('mongoose')
 
 // Schema to create Reaction Model
 const reactionSchema = new Schema(
   {
     reactionId: {
-      type: Schema.Types.ObjectId
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId()
     },
     reactionBody: {
       type: String,
@@ -29,11 +30,8 @@ const reactionSchema = new Schema(
   }
 )
 
-reactionSchema
-  .virtual('createdAtFormatted')
-  // Getter
-  .get(function () {
-    return this.createdAt.toLocalString()
-  })
+reactionSchema.virtual('Created').get(function () {
+  return this.createdAt.toLocaleString()
+})
 
 module.exports = reactionSchema

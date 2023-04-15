@@ -37,8 +37,12 @@ thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length
 })
 
-thoughtSchema.virtual('Time_Stamp').get(function () {
+thoughtSchema.virtual('Created').get(function () {
   return this.createdAt.toLocaleString()
+})
+
+thoughtSchema.virtual('Updated').get(function () {
+  return this.updatedAt.toLocaleString()
 })
 
 const Thought = model('Thought', thoughtSchema)
