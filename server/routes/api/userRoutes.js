@@ -77,7 +77,7 @@ router.put('/:userId/friends/:friendId', async (req, res) => {
   }
 })
 
-// Route /api/user/removeFriend:id
+// Route /api/user/:userId/friends/:friendId
 // DELETE to remove a friend from user's friend list
 router.delete('/:userId/friends/:friendId', async (req, res) => {
   try {
